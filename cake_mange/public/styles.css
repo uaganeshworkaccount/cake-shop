@@ -1,0 +1,319 @@
+ body {
+
+     font-family: Arial, sans-serif;
+
+     background-color: #f0f0f0;
+
+     margin: 0;
+
+     padding: 0;
+
+ }
+
+ .required-indicator::before {
+
+    content: '*';
+
+    color: red;
+
+    margin-right: 5px;
+
+  }
+
+ table {
+
+     border-collapse: collapse;
+
+     width: 80%;
+
+     margin: 20px auto;
+
+     background-color: #fff;
+
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+ }
+
+
+
+ th,
+ td {
+
+     border: 1px solid #ddd;
+
+     padding: 12px;
+
+     text-align: left;
+
+ }
+
+
+
+ th {
+
+     background-color: #4CAF50;
+
+     color: white;
+
+ }
+
+
+
+ #addCakeForm {
+
+     margin: 20px auto;
+
+     padding: 20px;
+
+     background-color: #fff;
+
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+     width: 60%;
+
+ }
+
+
+
+ input,
+ button {
+
+     margin: 10px;
+
+     padding: 10px;
+
+ }
+
+
+
+ button {
+
+     background-color: #4CAF50;
+
+     color: white;
+
+     border: none;
+
+     padding: 10px 20px;
+
+     text-align: center;
+
+     text-decoration: none;
+
+     display: inline-block;
+
+     font-size: 16px;
+
+     cursor: pointer;
+
+ }
+
+
+
+ button:hover {
+
+     background-color: #45a049;
+
+ }
+
+
+
+ .add-form {
+
+     display: flex;
+
+     flex-direction: column;
+
+ }
+
+ /* Styles for the cake table */
+
+ .styled-table {
+
+     width: 100%;
+
+     border-collapse: collapse;
+
+     margin-top: 20px;
+
+     margin-bottom: 20px;
+
+ }
+
+
+
+
+ .styled-table td {
+
+     padding: 12px;
+
+     text-align: left;
+
+     border-bottom: 1px solid #ddd;
+
+ }
+
+
+
+
+
+
+
+ .styled-table td:nth-child(7),
+
+
+ .styled-table td:nth-child(8),
+
+
+ .styled-table td:nth-child(9) {
+
+
+     max-width: 200px;
+
+     overflow: hidden;
+
+     text-overflow: ellipsis;
+
+     white-space: nowrap;
+
+ }
+
+
+
+
+ body {
+
+     font-family: 'Montserrat', sans-serif;
+
+     background-color: #f8f9fa;
+
+ }
+
+
+
+ .container {
+
+     margin-top: 50px;
+
+ }
+
+
+
+ .card-deck {
+
+     display: flex;
+
+     flex-wrap: wrap;
+
+     justify-content: space-around;
+
+ }
+
+
+
+ .card {
+
+     border: none;
+
+     margin-bottom: 20px;
+
+     transform: perspective(1000px);
+
+     transition: transform 0.5s;
+
+ }
+
+
+
+ .card:hover {
+
+     transform: scale(1.05) rotateY(10deg);
+
+ }
+
+
+
+ .card img {
+
+     height: 200px;
+
+     object-fit: cover;
+
+ }
+
+
+
+ .card-body {
+
+     text-align: center;
+
+ }
+
+
+ body {
+
+     font-family: 'Montserrat', sans-serif;
+
+     background-color: #f8f9fa;
+
+ }
+
+
+
+ .container {
+
+     margin-top: 50px;
+
+ }
+
+
+
+ .card-deck {
+
+     display: flex;
+
+     flex-wrap: wrap;
+
+     justify-content: space-around;
+
+ }
+
+
+
+ .card {
+
+     border: none;
+
+     margin-bottom: 20px;
+
+     transform: perspective(1000px);
+
+     transition: transform 0.5s;
+
+ }
+
+
+
+ .card:hover {
+
+     transform: scale(1.05) rotateY(10deg);
+
+ }
+
+
+
+ .card img {
+
+     height: 200px;
+
+     object-fit: cover;
+
+ }
+
+
+
+ .card-body {
+
+     text-align: center;
+
+ }

@@ -1,0 +1,113 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+
+.jumbotron {
+
+    background: url(cake-image.jpg) no-repeat center center;
+    background-size: cover;
+    color: #333;
+}
+
+
+
+
+.container {
+
+    text-align: center;
+
+}
+
+
+
+.card {
+
+    margin: 10px;
+
+}
+
+
+
+footer {
+    font-size: 14px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.styled-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.styled-table th,
+
+.styled-table td {
+
+    padding: 12px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+
+
+.styled-table th {
+
+    background-color: #f2f2f2;
+
+}
+
+
+
+/* Style for the add and edit forms */
+
+.add-form {
+
+    max-width: 400px;
+
+    margin: 20px;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+
+}
+
+
+
+/* Adjust the width of specific columns */
+
+.styled-table td:nth-child(7),
+/* Image column */
+
+.styled-table td:nth-child(8),
+/* Quality column */
+
+.styled-table td:nth-child(9) {
+    /* Topping column */
+
+    max-width: 200px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}

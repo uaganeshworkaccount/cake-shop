@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+   
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&display=swap" rel="stylesheet">
+
+     <!-- Kore Integration -->
+     <script src="../kore/UI/libs/kore-no-conflict-start.js" type="text/javascript"></script>
+     <script src="../kore/UI/libs/jquery.js" type="text/javascript"></script>
+     <script src="../kore/UI/libs/jquery.tmpl.min.js" type="text/javascript"></script>
+     <script src="../kore/UI/libs/jquery-ui.min.js" type="text/javascript"></script>
+     <script src="../kore/UI/libs/dompurify.js" type="text/javascript"></script>
+     <link href="../kore/UI/libs/jquery-ui.min.css" rel="stylesheet"></link>
+     <script src="../kore/UI/libs/moment.js" type="text/javascript"></script>
+ 
+     <script src="../kore/libs/lodash.min.js"></script>
+     <script src="../kore/libs/d3.v4.min.js"></script>
+     <script src="../kore/libs/KoreGraphAdapter.js" type="text/javascript"></script>
+     <script src='../kore/libs/anonymousassertion.js'></script>
+     <script src="../kore/kore-bot-sdk-client.js"></script>	
+ 
+    <script src="../kore/libs/perfect-scrollbar.js" type="text/javascript"></script>
+    <script src="../kore/UI/kore-widgets.js" type="text/javascript"></script>
+    <script src="../kore/UI/chatWindow.js" type="text/javascript"></script>
+    <script src="../kore/UI/libs/jquery.daterangepicker.js" type="text/javascript"></script>
+
+     <link href="../kore/UI/libs/daterangepicker.css" rel="stylesheet"></link>
+     <script src="../kore/UI/libs/jquery-clockpicker.js" type="text/javascript"></script>
+     <link href="../kore/UI/libs/jquery-clockpicker.css" rel="stylesheet"></link>
+     <link href="../kore/libs/kore-pickers.css" rel="stylesheet"></link>
+     <script src="../kore/libs/kore-pickers.js" type="text/javascript"></script>
+
+
+         <script src="../kore/libs/emoji.js" type="text/javascript"></script>
+         <script src="../kore/libs/recorder.js" type="text/javascript"></script>
+         <script src="../kore/libs/recorderWorker.js" type="text/javascript"></script>
+         <!-- <link href="../kore/UI/kore-widgets.css" rel="stylesheet"></link> -->
+         <link href="../kore/UI/chatWindow.css" rel="stylesheet"></link>
+ 
+         <link href="../kore/libs/emojione.sprites.css" rel="stylesheet"></link>
+         <link href="../kore/libs/purejscarousel.css" rel="stylesheet"></link>
+         <link href="../kore/libs/prefect-scrollbar.css" rel="stylesheet"></link>
+         <script src="../kore/libs/purejscarousel.js" type="text/javascript"></script>
+         <script src="../kore/UI/custom/customTemplate.js" type="text/javascript"></script>
+         <link href="../kore/UI/custom/customTemplate.css" rel="stylesheet"></link>
+         <script src="../kore/libs/ie11CustomProperties.js"></script>
+ 
+         <script src="../kore/UI/kore-config.js" type="text/javascript"></script>
+         <script src="../kore/UI/kore-widgets-config.js" type="text/javascript"></script>
+         <script src="../kore/UI/kore-widgets-chat-main.js" type="text/javascript"></script>
+         <script src="../kore/UI/libs/kore-no-conflict-end.js" type="text/javascript"></script>
+  
+    
+    
+</head>
+<body class="entire" onload="getCakeList()">
+    
+    <h2 id="mainheading">Sweet Temptations!</h2>
+    <button class="anchorbutton" onclick="logout()">Logout</button>
+
+    <div id="formdiv">
+    </div>
+    <!-- <form> -->
+        <div class="containers">
+        <input class="fielddata" type="text" id="customer_name" placeholder="Name" >
+        <input type="text" class="fielddata" id="customer_email" placeholder="Email" >
+        <input type="text" class="fielddata"  id="address" placeholder="Address" >
+        <input type="text" class="fielddata" id="phonenumber" placeholder="PhoneNumber" >
+        <span id="cakename"></span><span id="quantityname"></span>
+        <!-- <input type="text" class="fielddata" id="cakename" placeholder="Cakename" >
+        <input type="text" class="fielddata" id="quantity" placeholder="Quantity" > -->
+        
+        </br></br>
+        <button class="createbutton" onclick="createOrder()">Order Cake</button>
+        
+        </div>
+    <!-- </form> -->
+  
+  <div id="ordermessage"></div>
+  <div id="cakeimage">
+    <!-- <img id="showcake" src="data:image/jpeg;base64,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"/> -->
+  </div>
+  
+  
+    <div class="tablecontainer" id="generateTable">
+       
+    </div>
+    </div>
+
+
+    <div id="popup" class="popup">
+    <div class="popup-content">
+    <span class="close" id="closePopup">&times;</span>
+    <h2>Modify Order</h2>
+    <form id="popupForm">
+        <label for="updatename">Name:</label>
+        <input type="text" id="updatename" required>
+        <label for="updateemail">Email Id:</label>
+    <input type="email" id="updateemail" required>
+    <label for="updateaddress">Address</label>
+    <input type="text" id="updateaddress" required></br>
+    <label for="updatephone">Phone Number:</label>
+    <input type="text" id="updatephone" required>
+    <label for="updateitem">Item Ordered:</label>
+    <input type="text" id="updateitem" readonly    required>
+    <label for="updatequantiy">Quantity:</label>
+    <input type="text" id="updatequantiy" readonly required>
+    <input type="hidden" value="test" id="hiddenidvalue">
+    <br>
+    <button onclick="updateOrderDetails()">Update Details</button>
+    </form>
+    </div>
+    </div>
+    
+    <!-- <button onclick="cancelorder()" id="cancelOrderButton">Cancel Order</button> -->
+    <div class="ordercancelpopup" id="confirmationPopup">
+    <div class="cancelpopup-content">
+    <input type="hidden" id="passidfordelete" value="test">
+    <p id="deleteconfirm">Are you sure you want to cancel the order?</p>
+    <button id="confirmCancel" onclick="cancelOrder()"class="bts">Cancel Order</button>
+    <button id="goBack" class="bts">Go Back</button>
+    </div>
+    </div>
+
+
+    <div id="cakedescription"></div>
+
+    <div id="totalpricefinal"></div>
+
+</body>
+</html>

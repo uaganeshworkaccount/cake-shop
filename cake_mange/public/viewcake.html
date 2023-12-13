@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cake Management - View Cakes</title>
+
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <!-- Kore Integration -->
+    <script src="../../koreadmin/UI/libs/kore-no-conflict-start.js" type="text/javascript"></script>
+    <script src="../../koreadmin/UI/libs/jquery.js" type="text/javascript"></script>
+    <script src="../../koreadmin/UI/libs/jquery.tmpl.min.js" type="text/javascript"></script>
+    <script src="../../koreadmin/UI/libs/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../../koreadmin/UI/libs/dompurify.js" type="text/javascript"></script>
+    <link href="../../koreadmin/UI/libs/jquery-ui.min.css" rel="stylesheet"></link>
+    <script src="../../koreadmin/UI/libs/moment.js" type="text/javascript"></script>
+
+    <script src="../../koreadmin/libs/lodash.min.js"></script>
+    <script src="../../koreadmin/libs/d3.v4.min.js"></script>
+    <script src="../../koreadmin/libs/KoreGraphAdapter.js" type="text/javascript"></script>
+    <script src='../../koreadmin/libs/anonymousassertion.js'></script>
+    <script src="../../koreadmin/kore-bot-sdk-client.js"></script>	
+
+        <script src="../../koreadmin/libs/perfect-scrollbar.js" type="text/javascript"></script>
+        <script src="../../koreadmin/UI/kore-widgets.js" type="text/javascript"></script><!--widget sdk file-->
+        <script src="../../koreadmin/UI/chatWindow.js" type="text/javascript"></script>
+        <script src="../../koreadmin/UI/libs/jquery.daterangepicker.js" type="text/javascript"></script>
+		<link href="../../koreadmin/UI/libs/daterangepicker.css" rel="stylesheet"></link>
+		<script src="../../koreadmin/UI/libs/jquery-clockpicker.js" type="text/javascript"></script>
+		<link href="../../koreadmin/UI/libs/jquery-clockpicker.css" rel="stylesheet"></link>
+		<link href="../../koreadmin/libs/kore-pickers.css" rel="stylesheet"></link>
+		<script src="../../koreadmin/libs/kore-pickers.js" type="text/javascript"></script>
+        <script src="../../koreadmin/libs/emoji.js" type="text/javascript"></script>
+        <script src="../../koreadmin/libs/recorder.js" type="text/javascript"></script>
+        <script src="../../koreadmin/libs/recorderWorker.js" type="text/javascript"></script>
+        <!-- <link href="../../koreadmin/UI/kore-widgets.css" rel="stylesheet"></link>widget sdk file -->
+        <link href="../../koreadmin/UI/chatWindow.css" rel="stylesheet"></link>
+
+        <link href="../../koreadmin/libs/emojione.sprites.css" rel="stylesheet"></link>
+        <link href="../../koreadmin/libs/purejscarousel.css" rel="stylesheet"></link>
+        <link href="../../koreadmin/libs/prefect-scrollbar.css" rel="stylesheet"></link>
+        <script src="../../koreadmin/libs/purejscarousel.js" type="text/javascript"></script>
+        <script src="../../koreadmin/UI/custom/customTemplate.js" type="text/javascript"></script>
+        <link href="../../koreadmin/UI/custom/customTemplate.css" rel="stylesheet"></link>
+        <script src="../../koreadmin/libs/ie11CustomProperties.js"></script>
+
+        <script src="../../koreadmin/UI/kore-config.js" type="text/javascript"></script>
+        <script src="../../koreadmin/UI/kore-widgets-config.js" type="text/javascript"></script>
+        <script src="../../koreadmin/UI/kore-widgets-chat-main.js" type="text/javascript"></script>
+        <script src="../../koreadmin/UI/libs/kore-no-conflict-end.js" type="text/javascript"></script>
+
+
+
+</head>
+
+<body>
+    <div id="addCakeForm" class="add-form" style="display: none;">
+
+        <input type="text" id="cakeName" placeholder="Cake Name" required>
+
+        <input type="text" id="cakeFlavour" placeholder="Flavour" required>
+
+        <input type="number" id="cakeWeight" placeholder="Weight" required>
+
+        <input type="number" id="cakeLayers" placeholder="Layers" required>
+
+        <input type="number" id="cakePrice" placeholder="Price" required>
+
+        <input type="text" id="cakeImage" placeholder="Image URL">
+
+        <input type="text" id="cakeQuality" placeholder="Quality">
+
+        <input type="text" id="cakeTopping" placeholder="Topping">
+
+        <button onclick="addCake()">Submit</button>
+        <button onclick="cancelAddCake()">Cancel</button>
+
+
+    </div>
+
+
+
+    <!-- Edit Cake Form -->
+
+    <div id="editCakeForm" class="add-form" style="display: none;">
+
+        <h2>Edit Cake</h2>
+
+        <input type="hidden" id="editCakeId">
+
+        <input type="text" id="editCakeName" placeholder="Cake Name" required>
+
+        <input type="text" id="editCakeFlavour" placeholder="Flavour" required>
+
+        <input type="number" id="editCakeWeight" pattern="[0-9]{1}" placeholder="Weight" required>
+
+        <input type="number" id="editCakeLayers"  pattern="[0-9]{1}" placeholder="Layers" required>
+
+        <input type="number" id="editCakePrice" placeholder="Price" required>
+
+        <input type="text" id="editCakeImage" placeholder="Image URL" required>
+
+        <input type="text" id="editCakeQuality" placeholder="Quality" required>
+
+        <input type="text" id="editCakeTopping" placeholder="Topping" required>
+
+        <button onclick="updateCake()">Update</button>
+        <button onclick="cancelUpdateCake()">Cancel</button>
+
+    </div>
+
+
+    <button onclick="showAddCakeForm()">Add Cake</button>
+    <button onclick="viewOrder()">View Orders</button>
+    <button onclick="logout()">Logout</button>
+
+
+
+    <table id="cakeTable" class="styled-table">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Name</th>
+
+                <th>Flavour</th>
+
+                <th>Weight</th>
+
+                <th>Layers</th>
+
+                <th>Price</th>
+                <th>image</th>
+                <th>quality</th>
+                <th>topping</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+
+        </tbody>
+
+    </table>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./your_js_file.js"></script>
+</body>
+
+</html>
+
+</body>
+
+</html>

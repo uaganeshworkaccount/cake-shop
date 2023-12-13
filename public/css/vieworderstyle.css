@@ -1,0 +1,104 @@
+ h3{
+  position: absolute;
+    left: 579px;
+    top: -25px;
+    padding: 15px;
+    /* background: #333333; */
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+#logoutbutton {
+  position: absolute;
+  left: 1184px;
+  top: 12px;
+  border: none;
+  border-radius: 4px;
+  padding: 7px;
+  color: white;
+  background-color: #682d8c;
+}
+
+
+ #hds{
+  background: #333333;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* border: 1px solid red; */
+  height: 55px;
+
+ }
+ 
+ /* Style the table */
+  .modern-table {
+    width: 95%;
+    
+    position: absolute;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    top: 117px;
+    left: 54px;
+}
+
+body {
+  background-image: linear-gradient(to right, #662d8c, #ED1E79);
+}
+
+
+
+button#btnn {
+  color: snow;
+  background: green;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+}
+   .modern-table th, .modern-table td {
+    padding: 8px;
+    text-align: left;
+   }
+   
+   .modern-table th {
+    background-color: #333;
+    color: #fff;
+   }
+   
+   .modern-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+   }
+
+   .modern-table tr td:last-child{
+    width:20%;
+    text-align: center;
+   }
+   
+   .modern-table tr th:last-child{
+    width:20%;
+    text-align: center;
+   }
+
+   .modern-table tr td:nth-last-child(2){
+    width:1%;
+    text-align: center;
+   }
+   .modern-table tr th:nth-last-child(2){
+    width:1%;
+   
+   }
+
+   .modern-table  tr td:first-child {
+    text-align: left;
+    width:12%;
+   }
+
+   
+.tablecontainer{
+    /* position:relative; */
+    top:-5px;
+}
